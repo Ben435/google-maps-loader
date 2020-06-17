@@ -1,13 +1,15 @@
 <script>
-	import { initGoogleMapsLoader } from 'svelte-google-maps-loader'
+	import { initGoogleMapsLoader, initGoogleMapsAsync } from 'svelte-google-maps-loader'
 	import { GOOGLE_MAPS_API_KEY } from './config'
 
-	const loader = initGoogleMapsLoader({
+	const config = {
 		apiKey: GOOGLE_MAPS_API_KEY,
 		async: true,
-	})
+	};
 
-	loader.subscribe(google => {	
+	const loader = initGoogleMapsLoader(config)
+
+	loader.subscribe(google => {
 		const map = new google.maps.Map(document.getElementById("map"), {
 			zoom: 8,
 			center: {
