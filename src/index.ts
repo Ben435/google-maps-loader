@@ -1,29 +1,15 @@
-import { writable, Writable } from 'svelte/store';
-
-interface ApiConfig {
-    apiKey: string
-    async?: boolean
-}
-
-type GoogleMapsSdk = { maps: any }
-
-interface GoogleMapsSdkLoader extends Writable<GoogleMapsSdk> {}
-
-const validateApiConfig = (apiConfig: ApiConfig): void => {
-    if (!apiConfig.apiKey) {
-        throw Error(`GoogleMapsSDK requires API key, found: ${apiConfig.apiKey}`)
-    }
-}
+import { ApiConfig, GoogleMapsSdkLoader } from "./types";
+import { validateApiConfig, Loader } from "./utils";
 
 export const initGoogleMapsLoader = (apiConfig: ApiConfig): GoogleMapsSdkLoader  => {
     validateApiConfig(apiConfig);
 
-    const loader = writable<GoogleMapsSdk | null>(null);
+    const loader = Loader();
 
     const callbackFuncName = 'initMap';
 
     (window as any)[callbackFuncName] = () => {
-        setTimeout(() => loader.set(window.google), 2000)
+        setTimeout(() => loader.set((window as any).google), 2000)
     }
 
     const script = document.createElement('script');
