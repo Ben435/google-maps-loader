@@ -6,6 +6,21 @@ export const validateApiConfig = (apiConfig: ApiConfig): void => {
     }
 }
 
+export const constructSrcUrl = (apiConfig: ApiConfig, callbackFuncName: string): string => {
+    const baseUrl = 'https://maps.googleapis.com/maps/api/js'
+    const queryParams: any = {
+        key: apiConfig.apiKey,
+        callback: callbackFuncName,
+    }
+    if (apiConfig.version) {
+        queryParams.v = apiConfig.version
+    }
+
+    const queryString = new URLSearchParams(queryParams).toString();
+
+    return `${baseUrl}?${queryString}`
+}
+
 export function Loader(): GoogleMapsSdkLoader {
     let val: GoogleMapsSdk = null;
     let subscribers: ((v: GoogleMapsSdk) => void)[] = [];

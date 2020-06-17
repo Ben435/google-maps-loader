@@ -55,3 +55,4 @@ Either method takes an `ApiConfig` object, with the following options:
 | --- | ---- | ----------- |
 | `apiKey` | `string` | Your [Google Maps JavaScript SDK key](https://developers.google.com/maps/documentation/android-sdk/get-api-key#get-the-api-key) |
 | `async` | `boolean` | If set, will load the Google Maps SDK with the `async` and `defer` flags enabled.
+| `version` | `'weekly' | 'quarterly' | string` | SDK Version, as per [docs](https://developers.google.com/maps/documentation/javascript/versions)

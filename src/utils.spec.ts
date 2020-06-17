@@ -1,4 +1,4 @@
-import { validateApiConfig, Loader } from "./utils"
+import { validateApiConfig, Loader, constructSrcUrl } from "./utils"
 import { GoogleMapsSdk } from "./types";
 
 describe('utils', () => {
@@ -31,6 +31,29 @@ describe('utils', () => {
 
             loader.subscribe(sub2);
             expect(sub2).toHaveBeenCalledWith(dummyVal);
+        })
+    })
+
+    describe('constructSrcUrl', () => {
+        it('adds default params', () => {
+            const ret = constructSrcUrl({
+                apiKey: 'key',
+            }, 'callback');
+
+            expect(ret).toEqual(
+                'https://maps.googleapis.com/maps/api/js?key=key&callback=callback'
+            )
+        })
+
+        it('adds version when provided', () => {
+            const ret = constructSrcUrl({
+                apiKey: 'key',
+                version: 'weekly'
+            }, 'callback');
+
+            expect(ret).toEqual(
+                'https://maps.googleapis.com/maps/api/js?key=key&callback=callback&v=weekly'
+            )
         })
     })
 })

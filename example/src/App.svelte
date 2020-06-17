@@ -5,6 +5,7 @@
 	const config = {
 		apiKey: GOOGLE_MAPS_API_KEY,
 		async: true,
+		version: 'quarterly',
 	};
 
 	const loader = initGoogleMapsLoader(config)

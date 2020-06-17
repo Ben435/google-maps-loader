@@ -1,5 +1,5 @@
 import { ApiConfig, GoogleMapsSdk, GoogleMapsSdkLoader } from "./types";
-import { validateApiConfig, Loader } from "./utils";
+import { validateApiConfig, Loader, constructSrcUrl } from "./utils";
 
 export const initGoogleMapsAsync = (apiConfig: ApiConfig): Promise<GoogleMapsSdk>  => {
     return new Promise(resolve => initGoogleMapsLoader(apiConfig).subscribe(resolve));
@@ -15,8 +15,8 @@ export const initGoogleMapsLoader = (apiConfig: ApiConfig): GoogleMapsSdkLoader 
     (window as any)[callbackFuncName] = () => loader.set((window as any).google);
 
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiConfig.apiKey}&callback=${callbackFuncName}`;
-
+    
+    script.src = constructSrcUrl(apiConfig, callbackFuncName);
     if (apiConfig.async) {
         script.async = true;
         script.defer = true;
