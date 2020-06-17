@@ -5,7 +5,7 @@ Load Google Maps in an npm-friendly way.
 
 ## Usage
 
-Can either use the loader
+Can use the standard loader
 
 ```js
 import { initGoogleMapsLoader } from 'svelte-google-maps-loader'
@@ -26,13 +26,13 @@ loader.subscribe(google => {
 })
 ```
 
-Or via the `Promise` loader
+Or the `Promise` loader
 
 ```js
 import { initGoogleMapsAsync } from 'svelte-google-maps-loader'
 
 initGoogleMapsAsync({
-    apiKey: GOOGLE_MAPS_API_KEY,
+    apiKey: 'YOUR_API_KEY',
     async: true,
 }).then(google => {
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -45,11 +45,11 @@ initGoogleMapsAsync({
 })
 ```
 
-See [./example] for a `svelte` example.
+See [example](./example) for a `svelte` example.
 
 ## Config
 
-Either method takes a `config` object, with the following options:
+Either method takes an `ApiConfig` object, with the following options:
 
 | Key | Type | Description |
 | --- | ---- | ----------- |
