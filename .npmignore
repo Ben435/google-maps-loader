@@ -1,2 +1,4 @@
 src/
-./*.js
+example/
+keys/
+*.config.js
