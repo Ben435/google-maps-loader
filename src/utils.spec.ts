@@ -55,5 +55,27 @@ describe('utils', () => {
                 'https://maps.googleapis.com/maps/api/js?key=key&callback=callback&v=weekly'
             )
         })
+
+        it('adds libraries when provided', () => {
+            const ret = constructSrcUrl({
+                apiKey: 'key',
+                libraries: ['geometry']
+            }, 'callback');
+
+            expect(ret).toEqual(
+                'https://maps.googleapis.com/maps/api/js?key=key&callback=callback&libraries=geometry'
+            )
+        })
+
+        it('ignores empty libraries array', () => {
+            const ret = constructSrcUrl({
+                apiKey: 'key',
+                libraries: []
+            }, 'callback');
+
+            expect(ret).toEqual(
+                'https://maps.googleapis.com/maps/api/js?key=key&callback=callback'
+            )
+        })
     })
 })

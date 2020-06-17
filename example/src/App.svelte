@@ -5,7 +5,7 @@
 	const config = {
 		apiKey: GOOGLE_MAPS_API_KEY,
 		async: true,
-		version: 'quarterly',
+		libraries: ['geometry'],
 	};
 
 	const loader = initGoogleMapsLoader(config)

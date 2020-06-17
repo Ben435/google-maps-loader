@@ -15,6 +15,9 @@ export const constructSrcUrl = (apiConfig: ApiConfig, callbackFuncName: string):
     if (apiConfig.version) {
         queryParams.v = apiConfig.version
     }
+    if (apiConfig.libraries && apiConfig.libraries.length > 0) {
+        queryParams.libraries = apiConfig.libraries.join(',')
+    }
 
     const queryString = new URLSearchParams(queryParams).toString();
 
