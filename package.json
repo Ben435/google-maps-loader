@@ -1,0 +1,33 @@
+{
+  "name": "svelte-google-maps-loader",
+  "version": "0.0.1",
+  "description": "Load Google Maps in a Svelte-friendly way",
+  "main": "out/index.js",
+  "scripts": {
+    "watch": "rollup -cw",
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "google",
+    "maps",
+    "js",
+    "javascript",
+    "svelte"
+  ],
+  "author": {
+    "name": "Ben Clare",
+    "email": "ben.clare2@gmail.com"
+  },
+  "license": "ISC",
+  "peerDependencies": {
+    "svelte": "^3.23.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^4.1.2",
+    "rollup": "^2.16.1",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.5",
+    "svelte": "^3.23.2"
+  }
+}
